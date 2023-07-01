@@ -1,101 +1,66 @@
 # **REST API для Yatube**
 REST API для Yatube, с помощью которого можно передавать данные в любое приложение или на фронтенд
 
-## Установка
-Для того, чтобы развернуть проект на локальной машине, необходимо
-* клонировать репозиторий 
+<details>
+   <summary>Запуск проекта локально</summary> 
+ 
+Клонировать репозиторий и перейти в него в командной строке:
  ```
- git clone https://github.com/ekhitalenko/api_final_yatube
+ git clone git@github.com:kkhitalenko/Yatube_API.git
  ```
-* перейти в папку проекта 
  ```
- cd api_final_yatube
+ cd Yatube_API/
  ```
-* создать виртульное окружение:
-  * ```для Windows```:
-   ```
-   python -m venv venv
-   ```
-  * ```для Linux и macOS```: 
-  ```
-   python3 -m venv venv
-   ```
-* активировать виртульное окружение 
-  * ```для Windows```:
-   ```
-   source venv/Scripts/activate
-   ```
-  * ```для Linux и macOS```: 
-  ```
-   source venv/bin/activate
-   ```
-* установить все необходимые пакеты
-  ```
-   pip install -r requirements.txt
-   ```
-* выполнить миграции 
-  * ```для Windows```:
-   ```
-   python manage.py migrate
-   ```
-  * ```для Linux и macOS```: 
-  ```
-   python3 manage.py migrate
-   ```
-* запустить проект 
-  * ```для Windows```:
-   ```
-   python manage.py runserver
-   ```
-  * ```для Linux и macOS```: 
-  ```
-   python3 manage.py runserver
-   ```
-## Примеры запросов к API
+Cоздать и активировать виртуальное окружение:
 
-```Зарегистрировать нового пользователя```
 ```
-http://127.0.0.1:8000/api/v1/users/
-request POST, 
-body '{
-    "username": 
-        "yourusername",
-    "password": 
-        "yourpassword"
-}'
+python -m venv env
 ```
-```Создать JWT-токена```
+
+* Если у вас Linux/macOS
+
+    ```
+    source env/bin/activate
+    ```
+
+* Если у вас windows
+
+    ```
+    source env/scripts/activate
+    ```
+
 ```
-http://127.0.0.1:8000/api/v1/jwt/create/
-request POST, 
-body '{
-    "username": 
-        "yourusername",
-    "password": 
-        "yourpassword"
-}'
+python -m pip install --upgrade pip
 ```
-```Получить список постов```
+Установить зависимости из файла requirements.txt:
+
 ```
-http://127.0.0.1:8000/api/v1/posts/
-request GET, 
-header 'Authorization: Bearer yourtoken'
+pip install -r requirements.txt
 ```
-```Создать новый пост```
+
+Выполнить миграции:
 ```
-http://127.0.0.1:8000/api/v1/posts/
-request POST,
-header 'Authorization: Bearer yourtoken'
-body '{
-    "text": "Текст поста"
-}'
+cd yatube_api/
 ```
-```Создать новый комментарий```
 ```
-http://127.0.0.1:8000/api/v1/posts/post-id/comments/
-request POST,
-header 'Authorization: Bearer yourtoken'
-body '{
-    "text": "Текст комментария"
-}'
+python manage.py migrate
 ```
+Запустить проект:
+
+```
+python manage.py runserver
+```
+</details>
+
+Документация  и примеры запросов доступны после запуска проекта по адресу:
+```
+http://127.0.0.1:8000/redoc/
+```
+
+## Используемые технологиии:
+
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain.svg" title="Django" alt="Django" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/sqlite/sqlite-original.svg" title="SQLite" alt="SQLite" width="40" height="40"/>&nbsp;
+</div>
